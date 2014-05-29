@@ -1,4 +1,4 @@
-# markdown: markdown
+markdown: redcarpet
 permalink: /posts/:title
 
 gems:
