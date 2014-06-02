@@ -9,3 +9,4 @@ are then kept up.
 8. dealing with cast changes.
 9. cool people shows get populor not because of the show itself.
 10. game of thrones, star wars is space soap. even obi wan actor thought that even though he made money.
+11. Backwards compatibility and version 2.0
