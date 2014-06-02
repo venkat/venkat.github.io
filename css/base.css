@@ -36,12 +36,13 @@ a {
       letter-spacing: 1px;
       color: black; }
   .sidebar .meta a {
-    margin-left: 0px;
+    margin-left: 4px;
     color: black; }
     .sidebar .meta a:hover {
       color: #227ce8; }
   .sidebar .meta {
-    margin-left: 4px; }
+    margin-left: 4px;
+    margin-bottom: 4px; }
   .sidebar .meta .icon {
     margin-right: 6px; }
   .sidebar .sections {
