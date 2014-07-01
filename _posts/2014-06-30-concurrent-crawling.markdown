@@ -18,13 +18,13 @@ Given a source link, follow through and fetch the links you encounter in every p
 
 To solve this problem, we spawn a specified number of worker subtasks. Each worker constantly fetches the next link from a queue of links and uses a simple regular expression to look for new links to feed into the queue. Limiting total page fetches is done by keeping track of the number of pages fetched or links added to the queue. Go and Python crawlers do this a bit differently. I initially based my solution on this [Gevent Tutorial](http://blog.hownowstephen.com/post/50743415449/gevent-tutorial) but grew out of it.
 
-In both cases, the underlying scheduler (both Gevent and Go have their own scheduler) interleave execution of workers by starting one worker when some other worker is waiting blocked on something (in our case, a page fetch). This non-blocking makes the workers asynchronous on such network events without the programmer having to actively think about the context switches between workers. Now let's compare the code and see how they look.
+In both cases, the underlying scheduler (both Gevent and Go have their own scheduler) interleaves execution of workers by starting one worker when some other worker is waiting blocked on something (in our case, a page fetch). This behavior makes the workers asynchronous on such network events without the programmer having to actively think about the context switches between workers. Now let's compare the code and see how they look.
 
 The basic flow is:
 
 >Spawn specified number of `worker` tasks
 
->Each `worker` - continously get links from the queue of links and call `do_work`
+>Each `worker` - continuously get links from the queue of links and call `do_work`
 
 > `do_work` fetches the page, extracts links from the page and adds them to the queue of links
 
@@ -107,7 +107,7 @@ links_added += 1
 q.join()  # block until all tasks are done
 {% endhighlight %}
 
-The comments in the code above should help walk you through what's going on. A queue is used to keep track of links to crawl. The links are crawled depth first. Multiple workers fetch links from the queue at the same time and process them. The workers use a global counter to make sure that the total number of links added to the queue does not cross the maximum page fetch limit, till then they keep adding more links to the queue. The program exits when all the links added to the queue are all marked as processed.
+The comments in the code above should help walk you through what's going on. A queue is used to keep track of links to crawl. The links are crawled depth first. Multiple workers fetch links from the queue at the same time and process them. The workers use a global counter to make sure that the total number of links added to the queue does not cross the maximum page fetch limit. Until then they keep adding more links to the queue. The program exits when all the links added to the queue are marked as processed.
 
 ## Go
 
@@ -200,12 +200,12 @@ func main() {
 
 {% endhighlight %}
 
-The design and structure is pretty much the same as Python/Gevent but there are key differences. The concurrency is built-in. We are not using a third-party library or even a package for that. The code can run goroutines in multiple CPUs at the same time. This is very useful if there was lot of say, text processing and other CPU intensive tasks being done by the workers but ours is pretty much a network bound problem. The use of channels and select statements enables us to control the concurrent workers. Notice the use of channels as a queue to track what links to crawl. Even though the concurrency primitives are built-in and simple, deeper understanding is necessary to exploit the power of Go by combining them in novel ways.
+The design and structure are pretty much the same as Python/Gevent but there are key differences. The concurrency is built-in. We are not using a third-party library or even a package for that. The code can run goroutines in multiple CPUs at the same time. This is very useful if there was a lot of say, text processing or other CPU intensive tasks being done by the workers, but ours is primarily a network bound problem. The use of channels and select statements enables us to control the concurrent workers. Notice the use of channels as a queue to track what links to crawl. Even though the concurrency primitives are built-in and simple, deeper understanding is necessary to exploit the power of Go by combining them in novel ways.
 
 ## What I learned
 
 This experiment was not a study in performance but about the ease of designing concurrent solutions for IO or network bound problems. I learned that you gain a lot of powerful expressivity with Go but that comes with a need for deeper understanding and experience. Neither Gevent nor Go is fundamentally complex or complicated to use. With Go, you can also have it work for CPU bound problems.
 
-I guess it will take me some time to think in terms of channels and select statements in Go but till then, Gevent offers all I can ask for to build on top of my Python knowledge and write simple concurrent programs quickly.
+I guess it will take me some time to think in terms of channels and select statements in Go but until then, Gevent offers all I can ask for to build on top of my Python knowledge and write simple concurrent programs quickly.
 
 The code is available [here](https://github.com/venkat/GopherSnakeCrawlers). It also has a shell script that lets you run the crawler with different number of workers, page fetch limits.
