@@ -52,7 +52,7 @@ num_to_crawl = int(sys.argv[3]) #maximum no. of pages to fetch
 
 crawled = 0
 links_added = 0
-#JoinableQueue lets us wait till all the tasks in the queue are marked as done.
+#JoinableQueue lets us wait until all the tasks in the queue are marked as done.
 q = JoinableQueue() 
 
 #This function does the actual work of fetching the link and 
