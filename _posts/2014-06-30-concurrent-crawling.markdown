@@ -12,7 +12,7 @@ The primary aim of this exercise was to see how the program design and structure
 
 ## The Problem
 
-Given a source link, follow through and fetch the links you encounter in every page content. Limit total page fetches to a specified number. Link uniqueness doesn't matter.
+Given a source link, follow through and fetch the links you encounter in every page's content. Limit total page fetches to a specified number. Link uniqueness doesn't matter.
 
 ## Solution Design
 
