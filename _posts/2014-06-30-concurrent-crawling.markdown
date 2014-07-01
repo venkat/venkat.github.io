@@ -6,7 +6,7 @@ category: programming
 
 What crawls better, gopher or a snake? :)
 
-I was recently talking to my friend who is also a fellow python programmer, about the system he built to crawl millions of RSS feeds very fast. He has his solution working based on gevent and I was advocating him to take a look at Go, after being impressed with it after hearing [Brad Fitzpatrick's talk](http://talks.golang.org/2013/oscon-dl.slide#1) at the GoSF meetup on how they sped up dl.google.com using Go. At the end of our discussion, I got the itch to build out a sample crawler in both Python and Go with similar to compare.
+I was recently talking to my friend who is also a fellow python programmer, about the system he built to crawl millions of RSS feeds very fast. He has his solution working based on gevent and I was advocating him to take a look at Go, after being impressed with it after hearing [Brad Fitzpatrick's talk](http://talks.golang.org/2013/oscon-dl.slide#1) at the GoSF meetup on how they sped up dl.google.com using Go. At the end of our discussion, I got the itch to build out a sample crawler in both Python and Go to compare.
 
 The primary aim of this exercise was to see how the program design and structure compare across the two languages and to record my experiences while doing it. Note that I am a newbie to both Gevent and Go.
 
