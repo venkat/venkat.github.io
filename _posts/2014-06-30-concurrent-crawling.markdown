@@ -6,7 +6,7 @@ category: programming
 
 What crawls better, gopher or a snake? :)
 
-I was recently talking to my friend who is also a fellow python programmer, about the system he built to crawl millions of RSS feeds very fast. He has his solution working based on gevent and I was advocating him to take a look at Go, after being impressed with it after hearing [Brad Fitzpatrick's talk](http://talks.golang.org/2013/oscon-dl.slide#1) at the GoSF meetup on how they sped up dl.google.com using Go. At the end of our discussion, I got the itch to build out a sample crawler in both Python and Go to compare.
+I was recently talking to my friend who is also a fellow python programmer, about the system he built to crawl millions of RSS feeds very fast. He has his solution working based on Gevent and I was advocating him to take a look at Go, after being impressed with it after hearing [Brad Fitzpatrick's talk](http://talks.golang.org/2013/oscon-dl.slide#1) at the GoSF meetup on how they sped up dl.google.com using Go. At the end of our discussion, I got the itch to build out a sample crawler in both Python and Go to compare.
 
 The primary aim of this exercise was to see how the program design and structure compare across the two languages and to record my experiences while doing it. Note that I am a newbie to both Gevent and Go.
 
@@ -204,8 +204,8 @@ The design and structure are pretty much the same as Python/Gevent but there are
 
 ## What I learned
 
-This experiment was not a study in performance but about the ease of designing concurrent solutions for IO or network bound problems. I learned that you gain a lot of powerful expressivity with Go but that comes with a need for deeper understanding and experience. Neither Gevent nor Go is fundamentally complex or complicated to use. With Go, you can also have it work for CPU bound problems.
+This experiment was not a study in performance but about the ease of designing concurrent solutions for IO or network bound problems. I learned that you gain a lot of powerful expressivity with Go, but that comes with a need for deeper understanding and experience. Neither Gevent nor Go is fundamentally complex or complicated to use, but Go also works better with CPU bound problems.
 
-I guess it will take me some time to think in terms of channels and select statements in Go but until then, Gevent offers all I can ask for to build on top of my Python knowledge and write simple concurrent programs quickly.
+I guess it will take me some time to think in terms of channels and select statements in Go, but until then Gevent offers all I can ask for to build on top of my Python knowledge and write simple concurrent programs quickly.
 
-The code is available [here](https://github.com/venkat/GopherSnakeCrawlers). It also has a shell script that lets you run the crawler with different number of workers, page fetch limits.
+The code is available [here](https://github.com/venkat/GopherSnakeCrawlers). It also has a shell script that lets you run the crawler with different numbers of workers and page fetch limits.
