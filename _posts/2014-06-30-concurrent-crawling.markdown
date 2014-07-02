@@ -71,22 +71,22 @@ def do_work(link, crawler_id):
         return
     crawled += 1
 
-    #Some sample non-IO bound work on the content. In the real world, there 
-    #would be some heavy-duty parsing, DOM traversal here.
+    #Some sample non-IO bound work on the content. In the real world,
+    #there would be some heavy-duty parsing, DOM traversal here.
     
     m = hashlib.md5()
     m.update(response_content)
     m.digest()
 
     #Extract the links and add them to the queue. Using links_added
-    #counter to keep track of links fetched. Possible race condition.
+    #counter to limit the number of links to fetch.
     for link in re.findall('<a href="(http.*?)"', response_content):
         if links_added < num_to_crawl:
             links_added += 1
             q.put(link) 
 
-#Worker spawned by gevent. Continuously gets links, works on them and marks
-#them as done.
+#Worker spawned by gevent. Continuously gets links, works on them
+#and marks them as done.
 def worker(crawler_id):
     while True:
         item = q.get()
@@ -108,6 +108,8 @@ q.join()  # block until all tasks are done
 {% endhighlight %}
 
 The comments in the code above should help walk you through what's going on. A queue is used to keep track of links to crawl. The links are crawled depth first. Multiple workers fetch links from the queue at the same time and process them. The workers use a global counter to make sure that the total number of links added to the queue does not cross the maximum page fetch limit. Until then they keep adding more links to the queue. The program exits when all the links added to the queue are marked as processed.
+
+Note that since greenlets use [cooperative and not preemptive multitasking](http://blog.pythonisito.com/2012/07/introduction-to-gevent.html), there is no need to worry about a data race when updating global counters.
 
 ## Go
 
