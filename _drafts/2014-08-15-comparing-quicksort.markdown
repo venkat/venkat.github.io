@@ -4,6 +4,8 @@ title: Quicksort with Go and Python
 category: programming
 ---
 
+Catchphrase - Why is Quicksort so slow in Python but order of magnitude faster in Go?
+
 1. Mentioning working through Bentley's Programming Pearls.
 1. Code for Lamuto's quicksort with Python
 1. Surprised it takes so long.
