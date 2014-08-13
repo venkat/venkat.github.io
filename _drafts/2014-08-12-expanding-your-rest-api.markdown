@@ -43,7 +43,7 @@ This way, you can now do a HTTP GET on /users/41/ when you want to get the detai
 
 But there is one significant disadvantage, network latency. You can only fetch the user resource (over the network) once you fetch the comment and get the user reference from it. So, if you need to list 10 comments, you will have to make a bunch of HTTP GETs to get the details of the users who left those comments. This is not usually a bad thing (specially if you have cache-control setup right) if your design  and UI allow you to have some empty placeholder and the details can be loaded up asynchronously as each GET succeeds. In our mobile world, you should factor in the user moving in and out of data connectivity and as a result (based on the order in which the HTTP operations are executed), the more the number of pending HTTP GETs, the higher the chances of some of them failing and so you should be OK with not being able to display some of the user details. 
 
-In certain cases, this is not acceptable - let us say you're showing a complex receipt to your user which has a bunch of inter-related details. For example, the details of the charge, the details of the service provider, credits applied etc., In such cases, it is preferable to be as complete as possible and show all details together. Doing this by fetching disparate inter-connected information over multiple HTTPS GETs and have it be all-or-nothing can be a headache. You can still do it by showing some kind of loading spinner as you keep track of the GETs that are in progress and the ones that are completed in the background but there is a better way, you can just "expand" the nested relationships, where you roll-out the related resources in place, like so:
+In certain cases, this is not acceptable - let us say you're showing a complex receipt to your user which has a bunch of inter-related details. For example, the details of the charge, the details of the service provider, credits applied etc., In such cases, it is preferable to be as complete as possible and show all details together. Doing this by fetching disparate inter-connected information over multiple HTTPS GETs and have it be all-or-nothing can be a headache. You can still do it by showing some kind of loading spinner as you keep track of the GETs that are in progress and the ones that are completed in the background and that brings us to option two - you can just "expand" the nested relationships, where you roll-out the related resources in place like so:
 
 {%highlight json %}
 {
@@ -59,7 +59,6 @@ user: {
 
 <p></p>
 This approach has the flip of the pros and cons we saw with the previous approach. You do less network calls but end-up with more database lookups, more serialization and more data transferred everytime, even if your client ends up not  needing most of the nested information in most cases. This is specially pronounced when you are listing N objects. If you do M lookups per object then you need to do N x M looks to list them all.
-
 
 Usually, REST API authors choose one approach or the other at the API level or the endpoint level. They might even have two versions of the API, with and without the expansion.
 
