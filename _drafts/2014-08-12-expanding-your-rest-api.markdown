@@ -58,7 +58,7 @@ user: {
 {%endhighlight%}
 
 <p></p>
-This approach has the flip of the pros and cons we saw with the previous approach. You do less network calls but end-up with more database lookups, more serialization and more data transferred everytime, even if your client ends up not  needing most of the nested information in most cases. This is specially pronounced when you are listing N objects. If you do M lookups per object then you need to do N x M looks to list them all.
+This approach has the flip of the pros and cons we saw with the previous approach. You do less network calls but end-up with more database lookups, more serialization and more data transferred everytime, even if your client ends up not  needing most of the nested information in most cases. This is specially pronounced when you are listing N objects. If you do M lookups per object then you need to do N x M lookups to list them all.
 
 Usually, REST API authors choose one approach or the other at the API level or the endpoint level. They might even have two versions of the API, with and without the expansion.
 
