@@ -39,7 +39,7 @@ user: /users/41/
 {%endhighlight%}
 
 <p></p>
-This way, you can now do a HTTP GET on /users/41/ when you want to get the details of the user who left the comment with id 234. This approach has three main advantages - you limit the amount of data you transfer, you just need to send the reference id or URL of the user, not the entire resource. Second, it is efficient, you save the time that would have been spent on serializing the user resource. Third, cuts off a database lookup. This is possibly the biggest win - as my guru Tom Christie notes, lookups can [significantly slow down your service](http://www.dabapps.com/blog/api-performance-profiling-django-rest-framework/).
+This way, you can now do a HTTP GET on /users/41/ when you want to get the details of the user who left the comment with id 234. This approach has three main advantages. First, you limit the amount of data you transfer since you just need to send the reference id or URL of the user, not the entire resource. Second, it is efficient, you save the time that would have been spent on serializing the user resource. Third, cuts off a database lookup. This is possibly the biggest win - as my guru Tom Christie notes, lookups can [significantly slow down your service](http://www.dabapps.com/blog/api-performance-profiling-django-rest-framework/).
 
 But there is one significant disadvantage, network latency. You can only fetch the user resource (over the network) once you fetch the comment and get the user reference from it. So, if you need to list 10 comments, you will have to make a bunch of HTTP GETs to get the details of the users who left those comments. This is not usually a bad thing (specially if you have cache-control setup right) if your design  and UI allow you to have some empty placeholder and the details can be loaded up asynchronously as each GET succeeds. In our mobile world, you should factor in the user moving in and out of data connectivity and as a result (based on the order in which the HTTP operations are executed), the more the number of pending HTTP GETs, the higher the chances of some of them failing and so you should be OK with not being able to display some of the user details. 
 
@@ -64,13 +64,13 @@ Usually, REST API authors choose one approach or the other at the API level or t
 
 There are limitations to expanding all relationships in every resource. If a resource is connected to a bunch of other resources, the number of database lookups needed to respresent a single instance of the resource can be prohibitively high. Also, how do you choose what level of depth you expand the relationships for?
 
-There is a third, better approach that I learned from the famous [Stripe API](https://stripe.com/docs/api) - optionally specifying which relationships to [expand](https://stripe.com/docs/api#expand). You do this with the help of a special query parameter, say `expand`. The client chooses which attributes of the resource it is fetching by specifying them as the value of the `expand` key when it does a HTTP GET. Multiple attributes that need expanding are seperated by comma and nested attributes are represented by a dot. Using query paramters to support extra features on your REST API is not a new idea. Most REST APIs have some sort of sorting or filtering or pagination exposed through this approach. This is an extension of that idea to support selective expansion. JIRA's REST API is another [example](https://jira.atlassian.com/rest/api/latest/issue/JRA-9?expand=names,renderedFields) which supports `expand`,  where certain attributes are completely hidden unless specified with the expand query parameter. The resulting JSON has a special attribute which lists the names of such hidden, expandable attributes. Netflix's REST API also supports expansion [in a very specific way](http://developer.netflix.com/docs/REST_API_Conventions).
+There is a third, better approach that I learned from the famous [Stripe API](https://stripe.com/docs/api) - optionally specifying which relationships to [expand](https://stripe.com/docs/api#expand). You do this with the help of a special query parameter, say `expand`. The client chooses which attributes of the resource it is fetching by specifying them as the value of the `expand` key when it does a HTTP GET. Multiple attributes that need expanding are separated by comma and nested attributes are represented by a dot. Using query parameters to support extra features on your REST API is not a new idea. Most REST APIs have some sort of sorting or filtering or pagination exposed through this approach. This is an extension of that idea to support selective expansion. JIRA's REST API is another [example](https://jira.atlassian.com/rest/api/latest/issue/JRA-9?expand=names,renderedFields) which supports `expand`,  where certain attributes are completely hidden unless specified with the expand query parameter. The resulting JSON has a special attribute which lists the names of such hidden, expandable attributes. Netflix's REST API also supports expansion [in a very specific way](http://developer.netflix.com/docs/REST_API_Conventions).
 
-This level of flexibility works great for your API users. They know best about their application constraints and they can choose to only expand the specific resources they need right away and doing asynchronus GETs for others based on the experience they want to give their customers. This gives them the level of ease and control they would appreciate and as a result, the server only needs to do just the exact amount of work needed.
+This level of flexibility works great for your API users. They know best about their application constraints and they can choose to only expand the specific resources they need right away and doing asynchronous GETs for others based on the experience they want to give their customers. This gives them the level of ease and control they would appreciate and as a result, the server only needs to do just the exact amount of work needed.
 
 If you use the Django REST Framework, here is an example of how you could support expansion in your API - [https://github.com/venkat/DRFInlineExpansion](https://github.com/venkat/DRFInlineExpansion).
 
-Let see how it looks if we use inline expansion on the Snippet resource mentioned in the Django REST Framework [tutorial](http://www.django-rest-framework.org/tutorial/1-serialization#creating-a-model-to-work-with).
+Let see how it looks if we use in-line expansion on the Snippet resource mentioned in the Django REST Framework [tutorial](http://www.django-rest-framework.org/tutorial/1-serialization#creating-a-model-to-work-with).
 
 HTTP GET /snippets/
 
@@ -95,7 +95,7 @@ HTTP GET /snippets/
 }
 {% endhighlight %}
 
-Now, here is the JSON if you want the same listing but with the owner resource expanded inline:
+Now, here is the JSON if you want the same listing but with the owner resource expanded in-line:
 
 HTTP GET /snippets/?expand=owner
 
