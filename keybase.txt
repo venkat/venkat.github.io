@@ -1,0 +1,67 @@
+==================================================================
+https://keybase.io/venkat
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://venkat.io
+  * I am venkat (https://keybase.io/venkat) on keybase.
+  * I have a public key with fingerprint AA7E 9677 2E78 608F A976  A21C AEF1 5277 6F50 059C
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "aa7e96772e78608fa976a21caef152776f50059c",
+            "host": "keybase.io",
+            "key_id": "aef152776f50059c",
+            "kid": "0101db0eed7e02db5dc703b3a6ed83ec8133a10d3b43a8c74dd1804e4e3286db50da0a",
+            "uid": "4652e198a5982839de46ca9b5b742f00",
+            "username": "venkat"
+        },
+        "service": {
+            "hostname": "venkat.io",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1422230620,
+    "expire_in": 157680000,
+    "prev": "640c4e69b0798f931d3c8c19cb50951d9f19280c5c28ffd993fa343b4f5a171b",
+    "seqno": 3,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.1
+Comment: https://keybase.io/crypto
+
+yMIVAnicZZJrSFRBFMfXfJVhRFGRRdGtCGuxmfuaubv0yR7QQyMlDMRt7szc9WLt
+3XavlopZKIWVoD0gH6gURPilMoQoekkFlhVlUUj1tQzF7AHhi+ZafYjmyzDn/M/v
+zP9wHqQn+tISDp9Jqdx7EU0kPLkfLPXlP6wtrJRMh5VLgUqphE9flh0J81g0Zkdc
+KSARgrihIyRzhHWALWIgnciQEm5BTUZItzQANINKfqnYiXsVAmOSOM+yHRETj5DN
+PM7/+pLpBIAAMhNwzhAHMjM1RhFQTIXonGGFUwwVhUDAFFNVCKZIZQxioHKVKzLW
+hR4wAojAlU7jVF2TOTQw0QwsY8VgXNUpMUzNRKpsAeAJ4zwWIfu5UJfxSAlxpSq/
+JGJlNuXeADwf/+R/W4nGHNehzj4RLnbdaMCrcsujnuwgN0N/ACHTjjAxQVFQxmNx
+24lIASiU1LU9IlRlWVaALgO/xA9F7RgP2Z5CQzoG4nhteJlA6iqgKtcNEyADW4YC
+mUIxhQYVhg0NMsOChowB1aiMLYsZhmIRRRVDsjQCETQlz9KBiCMFFPFNEhbIuB2O
+ELc0xqWqnnuFSb6ENF9K8gxvB3xps+b+3Yyu1NSpFdm5Py/pgU3pky9ebj01cahv
+fsURZVC7OdlyrjdXcx52wsGFkzvGj24cnHO+Wd28Z8Q9Xl++g127vLzgZGwiecOx
+Fpp15P3ML7euVus1b9fOGcut2uL2v0OFRZklu5deT3y6vz6YmNmQn7No7ek6a15e
++soF/XdCFwaGz16p7hlY1YSsvvWXdgVP5NbUbR0qKO8cKOjN21Yx+noofTiPrs5Y
+U9vQ2F0z89Xs7WtynOwlba19aiA40njjTdHYaH5Hf3JT27oLXac7lzXhq095+wP8
+NVMftz9/mHpcfOdG0uzmj8/H29OaPvkzsvytP7qfTZyv2fno4uLSsLPn27rvHS9u
+B+/+AvEIJ00=
+=abdb
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/venkat
+
+==================================================================
