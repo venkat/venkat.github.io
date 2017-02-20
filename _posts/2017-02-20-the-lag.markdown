@@ -1,0 +1,23 @@
+---
+title: The Lag
+layout: post
+category: managment
+---
+
+The most interesting aspect of a manager's work life is what I would call "the lag". This is the gap between what you observe happening in your team (the effect) and what led to it (the cause). The lag between the two can be a few weeks or even a few months. 
+
+To illustrate, here are a few examples:
+
+* If something is broken, say you notice team morale is down, it likely started because of something that began months or weeks ago (maybe a change that was not properly communicated, lack of clarity about a new roadmap that was introduced a couple of months ago, etc.).
+* If your teammate tells you that they have decided to quit, they have likely been giving you indications to that effect during your 1:1s for a while now. Most people's "quit or stay" decision point happens months before the actual quitting.
+* For a project to proceed with good cadence, the planning needs to happen well before the start of work. 
+
+For new managers, it can take a while to get used to the lag, specially if they are transitioning from an IC role where the cause/effect cycle can be near instantaneous. 
+
+So how you handle the lag?
+
+1. Be patient - expect the lag. Learn to wait. Hang in there, this is going to take time. No amount of micromanaging now is going to immediately change something that was set in motion a while bag. In fact, it will probably mess things up. 
+2. Be hands on about things that are broken - you need to work on things that are hurting your team without delay. Since it takes a while to turn things around, you need to start now.
+3. Trust your team - trust connects and amplifies the cause (say, a plan) and the effect (say, achieving the goals mentioned in the plan). If there are trust issues, refer to point 1, you need to start working on it right now :)                           
+
+
