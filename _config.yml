@@ -4,7 +4,7 @@ permalink: /posts/:title
 gems:
   - jekyll-sitemap
 
-name: Venkat
+name: Venkat M
 author: Venkat Mahalingam
 url: http://venkat.io
 description: blah blah blah blog. Inside the box are many musings on life and programming from Venkata Mahalingam!
