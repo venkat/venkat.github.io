@@ -1,12 +1,22 @@
 markdown: kramdown
 permalink: /posts/:title
 
-gems:
+plugins:
   - jekyll-sitemap
 
-name: Venkat M
+title: Venkat M
 author: Venkat Mahalingam
 url: http://venkat.io
 description: blah blah blah blog. Inside the box are many musings on life and programming from Venkata Mahalingam!
 twitter: annacoder
 linkedin: annacoder
+
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    default_lang: plaintext
+    line_numbers: false
+    
